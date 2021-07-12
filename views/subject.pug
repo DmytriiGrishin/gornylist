@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  table
+    tr
+      th №
+      th Сумма баллов
+      th СНИЛС
+      th ВИД КОНКУРСА
+      th приоритет
+    each val, key in students
+      tr
+        th= key+1
+        th= val.sum_ball || val.osn_postup
+        th= val.snilsnumber_p
+        th= val.konkurs
+        th= val.priority_p

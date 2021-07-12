@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  ul
+    each val in subjects
+      li
+        a(href='/subject/' + val.program_id)= val.spec_name
