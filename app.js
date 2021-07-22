@@ -22,20 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/subject/:id', function(req, res, next) {
-  axios.get(`http://priem2021.spmi.ru/list/public/data/${req.params.id}1.json`)
-      .then(response => {
-        let students = response.data.sort((firstEl, secondEl) => {
-          if (secondEl.konkurs == "Особое право") {
-            return 100;
-          }
-          if (secondEl.konkurs == "Целевая квота") {
-            return 100;
-          }
-          if (secondEl.konkurs == "Без ВИ") {
-            return 100;
-          }
-          return secondEl.sum_ball - firstEl.sum_ball
-        });
+  axios.get(`http://priem2021.spmi.ru/wave-list-budjet/public/data/${req.params.id}1.json`)
+	.then(response => {
+        let students = response.data
         res.render('subject', { students: students })
       })
       .catch(err => console.log(err))
