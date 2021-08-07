@@ -22,9 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/subject/:id', function(req, res, next) {
-  axios.get(`http://priem2021.spmi.ru/wave-list-budjet/public/data/${req.params.id}1.json`)
+  axios.get(`http://priem2021.spmi.ru/wave-list-budjet-new/public/data/${req.params.id}1.json`)
 	.then(response => {
-        let students = response.data
+        let students = response.data.filter(s => s.rek != "Проходит по более приоритетному направлению")
         res.render('subject', { students: students })
       })
       .catch(err => console.log(err))

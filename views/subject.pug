@@ -8,6 +8,7 @@ block content
       th СНИЛС
       th ВИД КОНКУРСА
       th приоритет
+      th место
     each val, key in students
       tr
         th= key+1
@@ -15,3 +16,4 @@ block content
         th= val.snilsnumber_p
         th= val.konkurs
         th= val.priority_p
+        th= val.rek
